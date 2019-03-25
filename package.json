@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
+    "prestart": "npm install",
     "start": "ng serve",
     "build": "ng build",
     "test": "ng test",
@@ -10,7 +11,7 @@
     "e2e": "ng e2e",
     "poc:serve": "ng serve my-app-poc --open --port=3000",
     "poc:build": "ng build my-app-poc --prod",
-    "poc:serve-prod": "npx http-server -p 8000 -c-1 dist/my-app-poc"
+    "poc:serve-prod": "npm run poc:build & npx http-server -p 8000 -c-1 dist/my-app-poc"
   },
   "private": true,
   "dependencies": {

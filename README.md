@@ -6,6 +6,12 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
+## Deployment on AWS S3
+https://www.youtube.com/watch?v=RUKcrphvO8I
+
+## Development URL
+http://my-app-poc.s3-website.ap-south-1.amazonaws.com/login
+
 ## Code scaffolding
 
 Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
