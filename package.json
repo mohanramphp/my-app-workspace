@@ -7,7 +7,10 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "poc:serve": "ng serve my-app-poc --open --port=3000",
+    "poc:build": "ng build my-app-poc --prod",
+    "poc:serve-prod": "npx http-server -p 8000 -c-1 dist/my-app-poc"
   },
   "private": true,
   "dependencies": {
@@ -25,6 +28,7 @@
     "zone.js": "~0.8.26"
   },
   "devDependencies": {
+    "@angular-devkit/build-angular": "~0.13.0",
     "@angular/cli": "~7.3.6",
     "@angular/compiler-cli": "~7.2.0",
     "@angular/language-service": "~7.2.0",

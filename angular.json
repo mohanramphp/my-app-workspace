@@ -2,5 +2,139 @@
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "version": 1,
   "newProjectRoot": "projects",
-  "projects": {}
+  "projects": {
+    "my-app-poc": {
+      "root": "projects/my-app-poc/",
+      "sourceRoot": "projects/my-app-poc/src",
+      "projectType": "application",
+      "prefix": "my-app",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/my-app-poc",
+            "index": "projects/my-app-poc/src/index.html",
+            "main": "projects/my-app-poc/src/main.ts",
+            "polyfills": "projects/my-app-poc/src/polyfills.ts",
+            "tsConfig": "projects/my-app-poc/tsconfig.app.json",
+            "assets": [
+              "projects/my-app-poc/src/favicon.ico",
+              "projects/my-app-poc/src/assets"
+            ],
+            "styles": [
+              "projects/my-app-poc/src/styles.scss"
+            ],
+            "scripts": [],
+            "es5BrowserSupport": true
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/my-app-poc/src/environments/environment.ts",
+                  "with": "projects/my-app-poc/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "my-app-poc:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "my-app-poc:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "my-app-poc:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/my-app-poc/src/test.ts",
+            "polyfills": "projects/my-app-poc/src/polyfills.ts",
+            "tsConfig": "projects/my-app-poc/tsconfig.spec.json",
+            "karmaConfig": "projects/my-app-poc/karma.conf.js",
+            "styles": [
+              "projects/my-app-poc/src/styles.scss"
+            ],
+            "scripts": [],
+            "assets": [
+              "projects/my-app-poc/src/favicon.ico",
+              "projects/my-app-poc/src/assets"
+            ]
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/my-app-poc/tsconfig.app.json",
+              "projects/my-app-poc/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "my-app-poc-e2e": {
+      "root": "projects/my-app-poc-e2e/",
+      "projectType": "application",
+      "prefix": "",
+      "architect": {
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "projects/my-app-poc-e2e/protractor.conf.js",
+            "devServerTarget": "my-app-poc:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "my-app-poc:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": "projects/my-app-poc-e2e/tsconfig.e2e.json",
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "defaultProject": "my-app-poc"
 }
